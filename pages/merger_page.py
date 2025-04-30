@@ -65,7 +65,7 @@ def merger_page(config):
                 try:
                     os.remove(interim_file)
                     st.success("Fichier intermédiaire supprimé. Vous pouvez démarrer une nouvelle fusion.")
-                    st.experimental_rerun()
+                    st.rerun()
                 except:
                     st.error(f"Impossible de supprimer le fichier intermédiaire : {interim_file}")
 
@@ -160,7 +160,7 @@ def merger_page(config):
             # Supprimer les résultats existants
             if 'merge_results_path' in st.session_state:
                 del st.session_state['merge_results_path']
-            st.experimental_rerun()
+            st.rerun()
 
     # Si les données SEO sont disponibles, afficher les options de fusion
     elif has_keywords:

@@ -102,7 +102,7 @@ def keywords_page(config, site_url, start_date, end_date):
                 try:
                     os.remove(interim_file)
                     st.success("Fichier intermédiaire supprimé. Vous pouvez démarrer une nouvelle analyse.")
-                    st.experimental_rerun()
+                    st.rerun()
                 except:
                     st.error(f"Impossible de supprimer le fichier intermédiaire : {interim_file}")
 
@@ -163,7 +163,7 @@ def keywords_page(config, site_url, start_date, end_date):
                 del st.session_state['keywords_filename']
             if 'df_keywords_filtered' in st.session_state:
                 del st.session_state['df_keywords_filtered']
-            st.experimental_rerun()
+            st.rerun()
 
         # Continuer avec les options d'analyse comme avant
         st.subheader("Options d'analyse")
@@ -290,7 +290,7 @@ def keywords_page(config, site_url, start_date, end_date):
                     logger.info(f"Fichier temporaire sauvegardé: {temp_path}")
 
                     # Rafraîchir la page pour afficher les options d'analyse
-                    st.experimental_rerun()
+                    st.rerun()
             except Exception as e:
                 error_msg = f"Erreur lors de la lecture du fichier: {str(e)}"
                 logger.error(error_msg)

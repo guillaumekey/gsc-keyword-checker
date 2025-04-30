@@ -40,7 +40,7 @@ def crawl_page(config):
                 del st.session_state['crawl_filename']
             if 'crawl_results_path' in st.session_state:
                 del st.session_state['crawl_results_path']
-            st.experimental_rerun()
+            st.rerun()
 
         # Vérifier si les données ont déjà été traitées
         if 'crawl_results_path' in st.session_state:
@@ -163,7 +163,7 @@ def crawl_page(config):
                 logger.info(f"Fichier temporaire sauvegardé: {temp_path}")
 
                 # Rafraîchir la page pour afficher les options de traitement
-                st.experimental_rerun()
+                st.rerun()
             except Exception as e:
                 error_msg = f"Erreur lors de la lecture du fichier: {str(e)}"
                 logger.error(error_msg)
