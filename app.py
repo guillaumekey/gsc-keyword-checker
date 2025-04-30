@@ -61,6 +61,22 @@ def main():
         layout="wide"
     )
 
+    # Débogage des secrets - À SUPPRIMER APRÈS RÉSOLUTION DU PROBLÈME
+    with st.expander("Débogage secrets (administrateur uniquement)"):
+        if hasattr(st, 'secrets'):
+            st.write("Secrets disponibles :", list(st.secrets.keys()))
+            if 'app_password' in st.secrets:
+                st.write("Mot de passe configuré :", "Oui (longueur : " + str(len(st.secrets.app_password)) + ")")
+                # Ne jamais afficher le mot de passe réel en production!
+                # st.write("Premier caractère :", st.secrets.app_password[0])
+            else:
+                st.write("Mot de passe configuré : Non")
+
+            # Vérifiez la structure complète de st.secrets
+            st.json({k: str(type(v)) for k, v in st.secrets.items()})
+        else:
+            st.write("Aucun secret disponible")
+
     # Vérifier le mot de passe si configuré
     if not check_password():
         st.stop()  # Arrêter l'exécution si le mot de passe est incorrect
