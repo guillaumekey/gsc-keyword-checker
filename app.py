@@ -163,7 +163,7 @@ def main():
                 logger.info("Toutes les données ont été réinitialisées")
 
             st.success("Toutes les données ont été réinitialisées")
-            st.rerun()
+            st.rerun()  # Utilisez st.rerun() au lieu de st.experimental_rerun()
 
         # Afficher le chemin du fichier de log
         if 'logger' in st.session_state:
